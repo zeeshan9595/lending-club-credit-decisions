@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it as below."
+title: "Lending Club: Leakage-Aware Credit Decisions and Thin-File Fairness"
+authors:
+  - family-names: Azeem Khalid
+    given-names: Zeeshan
+version: 1.0.0
+date-released: 2026-11-10
+type: software
+repository-code: "https://github.com/zeeshan9595/lending-club-credit-decisions"
