@@ -1,8 +1,14 @@
 # Lending Club: leakage-aware credit decisions and thin-file fairness
 
+[![Notebook validation](https://github.com/zeeshan9595/lending-club-credit-decisions/actions/workflows/notebook-validation.yml/badge.svg?branch=portfolio%2Freproducibility-docs)](https://github.com/zeeshan9595/lending-club-credit-decisions/actions/workflows/notebook-validation.yml)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zeeshan9595/lending-club-credit-decisions/blob/portfolio/reproducibility-docs/lending_club_credit_decisions.ipynb)
+
+**[Model card](MODEL_CARD.md)** · **[Data dictionary](DATA_DICTIONARY.md)** · **[Notebook validation](validate_notebook.py)**
+
+
 An end-to-end credit risk analysis on **589,488 resolved 36-month Lending Club loans (2012-2015)**. The question is not "how high can AUC go?" but *which loans should a lender approve, what does that decision earn, and who pays for the model's mistakes?*
 
-Notebook: [lending_club_credit_decisions.ipynb](lending_club_credit_decisions.ipynb), runnable top to bottom in Google Colab (it downloads the data from Kaggle).
+Notebook: [lending_club_credit_decisions.ipynb](lending_club_credit_decisions.ipynb), designed to run top to bottom in Google Colab. It downloads the public Lending Club dataset through KaggleHub; the raw dataset is not stored in this repository. See the [environment requirements](requirements.txt) before running locally.
 
 ## Design
 
@@ -60,9 +66,25 @@ Notebook: [lending_club_credit_decisions.ipynb](lending_club_credit_decisions.ip
 
 [All Lending Club loan data](https://www.kaggle.com/datasets/wordsforthewise/lending-club) on Kaggle, CC0 public domain. The raw data is not stored in this repo; the notebook downloads it with kagglehub.
 
+## Reproducibility and validation
+
+The notebook downloads a large public dataset and runs a computationally intensive analysis. The automated workflow therefore validates notebook structure and metadata; it does **not** execute the full modelling experiment or claim fresh performance results.
+
+Local environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows PowerShell: .\\.venv\\Scripts\\Activate.ps1
+python -m pip install -r requirements.txt
+python validate_notebook.py
+python -m unittest discover -s tests -v
+```
+
+The reported metrics in this README are the results documented by the notebook. Re-run the complete notebook against the downloaded dataset before presenting them as a newly reproduced run.
+
 ## Stack
 
-Python, pandas, scikit-learn, LightGBM, SHAP, matplotlib, Google Colab.
+Python, pandas, scikit-learn, LightGBM, SHAP, matplotlib, KaggleHub, Google Colab.
 
 ---
 Zeeshan Azeem Khalid · [LinkedIn](https://linkedin.com/in/zeeshan-azeem-khalid) · Related: [fraud detection leakage audit](https://github.com/zeeshan9595/Fraud-Detection-using-AI-and-ML)
